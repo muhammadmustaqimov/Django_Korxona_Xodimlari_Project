@@ -1,0 +1,57 @@
+<!DOCTYPE html> {% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Korxona Xodimlari</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+
+
+</head>
+
+<body>
+    <div>
+        <header>
+            <div class="nav-left">
+                <h1>
+                    <a href="{% url 'home' %}">Korxona Xodimlari Loyihasi</a>
+                </h1>
+            </div>
+            <div>
+                {% if user.is_authenticated %}
+                <div class="page1">
+                    <div class="nav-right">
+                        <a href="{% url 'post_new' %}"><i class="fa-solid fa-user-plus"></i>  Xodim qo'shish</a>
+                    </div>
+                    <p><a class="button" href="{% url 'logout' %}">Saytdan chiqish</a></p>
+                </div>
+
+                {% else %}
+                <div class="page2">
+                    <a class="button" href="{% url 'login' %}">Saytga kirish</a>
+                    <a class="button" href="{% url 'signup' %}">Ro'yxatdan o'tish</a>
+
+                </div>
+                {% endif %}
+            </div>
+        </header>
+        <!-- <p class="welcome">Xush kelibsiz <span>{{ user.username }}</span>!</p> -->
+
+
+        <!-- content -->
+        <div class="content">
+            <div class="content-items">{% block content %} {% endblock content %}</div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+</html>
+
+</html>

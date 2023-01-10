@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+<style>
+
+</style>
+
+{% block content %}
+<div class="post-entry content-item-1">
+    <img src="{{posts.img.url}}" alt="{{posts.fullname}}">
+    <div class="item">
+        <h2>
+            {{post.fullname }}
+        </h2>
+        <p>
+            {{post.about }}
+        </p>
+        <h4>Lavozimi:{{post.position }}</h4><br>
+    </div>
+</div>
+
+
+<p><a class="button button-item" href="{% url 'post_edit' post.pk %}">
+        Xodimni tahrirlash
+    </a></p>
+<p><a class="button button-item" href="{% url 'post_delete' post.pk %}">
+        Xodimni o'chirish
+    </a></p>
+{% endblock content %}
