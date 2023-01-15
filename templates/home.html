@@ -1,19 +1,32 @@
-{% extends 'base.html' %} {% block content %} {% for post in object_list %}
+{% extends 'base.html' %} {% block content %}
 
-<div class="post-entry content-item">
 
-    <h2>
-        {% if post.img %}
-        <img src="{{post.img.url}}" width="200"> {% endif %}
-        <a href="{% url 'post_detail' post.pk %}"> {{post.fullname }} </a>
+<form action="/"
+    style="display: flex; width: 100%; height: 50px !important; flex-direction: row; justify-content: center;">
+    <input type="search" name="search">
+    <input type="submit" value="Search">
+</form>
+
+<br>
+
+
+<div class="content-items" style="padding: 10px ;">
+    {% for post in customers %}
+
+    <div class="post-entry content-item">
+
+        <h2>
+            {% if post.img %}
+            <img src="{{post.img.url}}" width="200"> {% endif %}
+            <a href="{% url 'post_detail' post.pk %}"> {{post.fullname }} </a>
+            <p>
+                <b>Lavozimi :</b> {{post.position }}
+            </p>
+
+        </h2>
         <p>
-            <b>Lavozimi :</b> {{post.position }}
+            {{post.about | slice:":50"}} ...
 
         </p>
-
-    </h2>
-    <p>
-        {{post.about | slice:":50"}} ...
-
-    </p>
-</div>{% endfor %} {% endblock content %}
+    </div> {% endfor %}
+    </div>{% endblock content %}
