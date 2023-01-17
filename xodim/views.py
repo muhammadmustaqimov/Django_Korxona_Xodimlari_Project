@@ -11,7 +11,7 @@ class XodimListView(ListView):
         print(search)
         customers = Post.objects.all()
         if (search):
-            customers = Post.objects.filter(fullname__contains=search)
+            customers = Post.objects.filter(position__contains=search)
 
         return render(request, 'home.html', {'customers': customers})
 
